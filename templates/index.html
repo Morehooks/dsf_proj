@@ -16,51 +16,10 @@
     <![endif]-->
   </head>
   <body>
-    <div id="app">
-		<message-item v-bind:message="message"></message-item>
-	</div>
-    {%  verbatim %}
-	<hr/>
-	<div id="app2">
-		<span v-bind:title="message">
-			Hover over this message for the date!
-		</span>
-	</div>
-	<hr/>
-	<div id="app3">
-		<p v-if="seen">Now you see me... (Type app3.seen = false to disappear)</p>
-	</div>
-	<hr/>
-	<div id="app4">
-		<ol>
-			<li v-for="todo in todos">
-				{{ todo.text }}
-			</li>
-		</ol>
-	</div>
-	<hr/>
-	<div id="app5">
-		<p>{{ message }}</p>
-		<button  v-on:click="reverseMessage">Reserve Message</button>
-	</div>
-	<hr/>
-	<div id="app6">
-		<p>{{ message }}</p>
-		<input v-model="message">
-	</div>
-	<hr/>
-
-	<div id="app7">
-		<ol>
-			<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-		</ol>
-	</div>
     <div id="app8">
-		<li v-for="item in raw_data">
-				{{ item.section_seq }}
-        </li>
+        <data-item v-for="item in raw_data" :key="item.section_seq" v-bind:raw_data="item"></data-item>
 	</div>
-	{% endverbatim %}
+
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
