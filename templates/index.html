@@ -49,17 +49,25 @@
 		<input v-model="message">
 	</div>
 	<hr/>
-	{% endverbatim %}
+
 	<div id="app7">
 		<ol>
 			<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
 		</ol>
 	</div>
+    <div id="app8">
+		<li v-for="item in raw_data">
+				{{ item.section_seq }}
+        </li>
+	</div>
+	{% endverbatim %}
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="{% static "vue.js" %}"></script>
     <script type="text/javascript" src="{% static "master.js" %}"></script>
+
   </body>
 </html>
