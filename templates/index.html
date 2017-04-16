@@ -16,14 +16,19 @@
     <![endif]-->
   </head>
   <body>
-    <div id="app8">
-        <!--<data-item v-for="item in raw_data" :key="item.section_seq" v-bind:raw_data="item"></data-item>-->
-
+    <div id="app8" class="container">
     {% verbatim %}
-        <div v-for="section in raw_data" :key="section.section_seq">{{ section.section_text }}
-            <div v-for="question in raw_data" :key="question.question_seq"
-                 v-if="section.section_seq === question.section_seq">
-                {{ question.question_text }}
+        <h1 class="text-center">{{ raw_data[0].section_text }}</h1>
+        <h2 class="text-center">{{ raw_data[0].page_header }}</h2>
+        <div v-for="question in raw_data" :key="question.question_seq"
+            v-if="question.response_seq === 100" class="col-lg-12 row">
+            <h3>{{ question.question_text }}</h3>
+            <div v-for="response in raw_data" :key="response.response_seq"
+                 v-if="question.question_seq === response.question_seq"
+                 class="btn-group col-lg-3" data-toggle="buttons">
+                <label class="btn btn-success btn-lg btn-block"><input type="radio" autocomplete="off">
+                    {{ response.response_text }}
+                </label>
             </div>
         </div>
     {% endverbatim %}
@@ -35,6 +40,5 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="{% static "vue.js" %}"></script>
     <script type="text/javascript" src="{% static "master.js" %}"></script>
-
   </body>
 </html>
