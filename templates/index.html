@@ -17,9 +17,17 @@
   </head>
   <body>
     <div id="app8">
-        <data-item v-for="item in raw_data" :key="item.section_seq" v-bind:raw_data="item"></data-item>
-	</div>
+        <!--<data-item v-for="item in raw_data" :key="item.section_seq" v-bind:raw_data="item"></data-item>-->
 
+    {% verbatim %}
+        <div v-for="section in raw_data" :key="section.section_seq">{{ section.section_text }}
+            <div v-for="question in raw_data" :key="question.question_seq"
+                 v-if="section.section_seq === question.section_seq">
+                {{ question.question_text }}
+            </div>
+        </div>
+    {% endverbatim %}
+    </div>
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
