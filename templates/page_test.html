@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="app8" class="container">
+    {% verbatim %}
+        <h1 class="text-center">{{ raw_data[0].section_text }}</h1>
+        <h2 class="text-center">{{ raw_data[0].page_header }}</h2>
+        <div v-for="question in raw_data" :key="question.question_seq"
+            v-if="question.response_seq === 100" class="col-lg-12 row">
+            <h3>{{ question.question_text }}</h3>
+            <div v-for="response in raw_data" :key="response.response_seq"
+                 v-if="question.question_seq === response.question_seq"
+                 class="btn-group col-lg-3" data-toggle="buttons">
+                <label class="btn btn-success btn-lg btn-block"><input type="radio" autocomplete="off">
+                    {{ response.response_text }}
+                </label>
+            </div>
+        </div>
+        <button v-on:click="page_down()" class="btn">Previous</button>
+        <button v-on:click="page_up()" class="btn">Next</button>
+
+    {% endverbatim %}
+    </div>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="{% static "vue.js" %}"></script>
+    <script type="text/javascript" src="{% static "page_master.js" %}"></script>
+  </body>
+</html>

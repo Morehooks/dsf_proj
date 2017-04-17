@@ -1,7 +1,7 @@
 
 Vue.component('data-item', {
 	props: ['raw_data'],
-	template: '<li>{{ raw_data.section_seq }}</li>'
+	template: '<li>{{ raw_data.page_seq }}</li>'
 })
 
 var app8 = new Vue({
@@ -30,6 +30,7 @@ var app8 = new Vue({
         this.get_raw_data();
     }
 })
+
 
 
 
